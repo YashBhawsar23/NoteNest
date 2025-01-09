@@ -23,14 +23,14 @@ const pasteSlice = createSlice({
     addToPastes: (state, action) => {
       const paste = action.payload;
       if (!paste || !paste._id) {
-        toast.error("Invalid paste data");
+        toast.error("Invalid Note data");
         return;
       }
 
       const index = state.pastes.findIndex((item) => item._id === paste._id);
 
       if (index >= 0) {
-        toast.error("Paste already exists");
+        toast.error("Note already exists");
         return;
       }
 
@@ -38,17 +38,17 @@ const pasteSlice = createSlice({
 
       try {
         localStorage.setItem("pastes", JSON.stringify(state.pastes));
-        toast.success("Paste added");
+        toast.success("Note added");
       } catch (error) {
         console.error("Error saving to localStorage:", error);
-        toast.error("Failed to save paste");
+        toast.error("Failed to save Note");
       }
     },
 
     updatePastes: (state, action) => {
       const paste = action.payload;
       if (!paste || !paste._id) {
-        toast.error("Invalid paste data");
+        toast.error("Invalid Note data");
         return;
       }
 
@@ -58,10 +58,10 @@ const pasteSlice = createSlice({
         state.pastes[index] = paste;
         try {
           localStorage.setItem("pastes", JSON.stringify(state.pastes));
-          toast.success("Paste updated");
+          toast.success("Note updated");
         } catch (error) {
           console.error("Error saving to localStorage:", error);
-          toast.error("Failed to update paste");
+          toast.error("Failed to update Note");
         }
       }
     },
@@ -69,7 +69,7 @@ const pasteSlice = createSlice({
     removeFromPastes: (state, action) => {
       const pasteId = action.payload;
       if (!pasteId) {
-        toast.error("Invalid paste ID");
+        toast.error("Invalid Note ID");
         return;
       }
 
@@ -79,10 +79,10 @@ const pasteSlice = createSlice({
         state.pastes.splice(index, 1);
         try {
           localStorage.setItem("pastes", JSON.stringify(state.pastes));
-          toast.success("Paste deleted");
+          toast.success("Note deleted");
         } catch (error) {
           console.error("Error saving to localStorage:", error);
-          toast.error("Failed to delete paste");
+          toast.error("Failed to delete Note");
         }
       }
     },

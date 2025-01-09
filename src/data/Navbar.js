@@ -5,6 +5,6 @@ export const NavbarData = [
   },
   {
     path: "/pastes",
-    title: "Paste",
+    title: "Notes",
   },
 ];
