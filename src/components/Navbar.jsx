@@ -1,4 +1,3 @@
-
 import { NavbarData } from "../data/Navbar";
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
